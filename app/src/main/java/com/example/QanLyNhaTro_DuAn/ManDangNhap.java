@@ -9,75 +9,52 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.QanLyNhaTro_DuAn.DAO.NguoiDungDao;
-import com.example.QanLyNhaTro_DuAn.Model.NguoiDung;
-import com.example.QanLyNhaTro_DuAn.R;
-import com.example.QanLyNhaTro_DuAn.SQLite.MySQLite;
-
-
-import java.util.List;
 
 public class ManDangNhap extends AppCompatActivity {
     EditText edtUser,edtPass;
     Button button2;
-    TextView tvDangky;
-    MySQLite mySQLite;
+
+
     CheckBox checkBox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dangnhap);
-        mySQLite=new MySQLite(ManDangNhap.this);
+
 
 
 //        List<NguoiDung> nguoiDungList=nguoiDungDao.dangNhap();
         edtUser=findViewById(R.id.edtUser);
         edtPass=findViewById(R.id.edtPass);
         button2=findViewById(R.id.button2);
-        tvDangky=findViewById(R.id.tvDangky1);
+
         checkBox=findViewById(R.id.checkBox);
         this.load();
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NguoiDungDao nguoiDungDao=new NguoiDungDao(mySQLite);
+                if (edtUser.getText().length() != 0 && edtPass.getText().length() != 0  ) {
+                    if (edtUser.getText().toString().equals("quanlynhatro") && edtPass.getText().toString().equals("123")) {
+                           Toast.makeText(ManDangNhap.this,"Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                           Intent intent = new Intent(ManDangNhap.this,TrangChuActivity.class);
+                           startActivity(intent);
+                    }else {
+                        Toast.makeText(ManDangNhap.this,"Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
 
-                String user = edtUser.getText().toString();
-                String pass = edtPass.getText().toString();
-                List<NguoiDung> nguoiDungList=nguoiDungDao.dangNhap(user,pass);
-
-
-                if (nguoiDungList.size()==0){
-                    edtUser.setError("Vui Lòng Kiểm Tra Lại Tài Khoảm và Mật Khẩu");
-                }else {
-                    for (NguoiDung s:nguoiDungList){
-                        if (s.username.equals(user) && s.pass.equals(pass)){
-                            Intent intent=new Intent(ManDangNhap.this,TrangChuActivity.class);
-                            intent.putExtra("uss",user);
-                            intent.putExtra("pass",pass);
-                            startActivity(intent);
-                            Toast.makeText(ManDangNhap.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                        }else {
-                            edtUser.setError("Vui lòng kiểm tra lại tài khoản và mật khẩu");
-
-                        }
                     }
+
+                }else {
+                    Toast.makeText(ManDangNhap.this,"Mời bạn nhập đủ thông tin", Toast.LENGTH_SHORT).show();
+
                 }
             }
 
+
         });
 
-        tvDangky.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ManDangNhap.this,DangKi.class);
-                startActivity(intent);
-            }
-        });
+
 
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override

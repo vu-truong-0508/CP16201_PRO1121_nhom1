@@ -9,8 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".DangKi"></activity>
-        <activity android:name=".ManDangKi" />
+        <activity
+            android:name=".LapHoaDonActivity"
+            android:exported="true" />
+        <activity android:name=".DanhSachHoaDonActivity" />
+        <activity android:name=".DanhSachPhongActivity" />
+        <activity android:name=".ChiTietHoaDonActivity" />
+        <activity android:name=".HoaDonCuaTungPhongActivity" />
         <activity android:name=".TrangChuActivity" />
         <activity android:name=".ManDangNhap">
             <intent-filter>

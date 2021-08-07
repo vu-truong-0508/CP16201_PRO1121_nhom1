@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/TRUONG XUAN VU/Desktop/CP16201_PRO1121_nhom1/app/src/main/res/layout/activity_cap_nhat_gia_dien_nuoc.xml" value="0.1" />
+        <entry key="..\:/Users/TRUONG XUAN VU/Desktop/CP16201_PRO1121_nhom1/app/src/main/res/layout/activity_chi_tiet_hoa_don.xml" value="0.1" />
+        <entry key="..\:/Users/TRUONG XUAN VU/Desktop/CP16201_PRO1121_nhom1/app/src/main/res/layout/activity_danh_sach_hoa_don.xml" value="0.1" />
+        <entry key="..\:/Users/TRUONG XUAN VU/Desktop/CP16201_PRO1121_nhom1/app/src/main/res/layout/activity_danh_sach_phong.xml" value="0.1" />
+        <entry key="..\:/Users/TRUONG XUAN VU/Desktop/CP16201_PRO1121_nhom1/app/src/main/res/layout/activity_lap_hoa_don.xml" value="0.1" />
+        <entry key="..\:/Users/TRUONG XUAN VU/Desktop/CP16201_PRO1121_nhom1/app/src/main/res/layout/activity_trang_chu.xml" value="0.11773585329364752" />
+        <entry key="..\:/Users/TRUONG XUAN VU/Desktop/CP16201_PRO1121_nhom1/app/src/main/res/layout/dangnhap.xml" value="0.19924529018924966" />
+        <entry key="..\:/Users/TRUONG XUAN VU/Desktop/CP16201_PRO1121_nhom1/app/src/main/res/menu/menu.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutdsphong"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".DanhSachPhongActivity">
+
+
+
+    <ListView
+        android:id="@+id/lsvDanhsachphong"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+
+        android:cacheColorHint="#E4FA08"
+        tools:listitem="@android:layout/simple_list_item_1" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ftbTrangChu"
+        android:src="@drawable/home"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/nuthome"
+        />
+    <include layout="@layout/banut" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

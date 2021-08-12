@@ -30,7 +30,7 @@
                 android:textStyle="bold"
                 android:textSize="20dp"
 
-                android:text="1.Nguyễn Thành Luận"/>
+                android:text="1.Lê Văn Duy"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,22 +38,15 @@
 
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:text="2.Lê Văn Duy"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:text="2.Trương Xuân Vũ"/>
 
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:text="3.Trương Xuân Vũ"/>
         </LinearLayout>
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="305dp"
             android:layout_marginTop="50dp"
-            android:background="@drawable/man_hinh_chao" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/man_hinh_chao"/>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

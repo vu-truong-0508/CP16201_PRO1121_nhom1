@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.QanLyNhaTro_DuAn">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,13 +14,44 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".DanhSachPhong_HoaDonActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SuaKhachActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ThemNguoiThueActivity"
+            android:exported="true" />
+        <activity
+            android:name=".XemThanhVienActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SuaPhongActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ThemPhongActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CapNhatGiaDienNuocActivity"
+            android:exported="true" />
+        <activity
             android:name=".LapHoaDonActivity"
             android:exported="true" />
-        <activity android:name=".DanhSachHoaDonActivity" />
-        <activity android:name=".DanhSachPhongActivity" />
-        <activity android:name=".ChiTietHoaDonActivity" />
-        <activity android:name=".HoaDonCuaTungPhongActivity" />
-        <activity android:name=".TrangChuActivity" />
+        <activity
+            android:name=".DanhSachHoaDonActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DanhSachPhongActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChiTietHoaDonActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HoaDonCuaTungPhongActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TrangChuActivity"
+            android:exported="true" />
         <activity android:name=".ManDangNhap">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

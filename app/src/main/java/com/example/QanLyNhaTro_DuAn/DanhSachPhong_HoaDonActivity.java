@@ -17,47 +17,44 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import com.example.QanLyNhaTro_DuAn.Adapter.AdapterPhong;
+import com.example.QanLyNhaTro_DuAn.Adapter.AdapterChiTietHoaDon;
 import com.example.QanLyNhaTro_DuAn.Database.Database;
 import com.example.QanLyNhaTro_DuAn.Model.Phong;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class DanhSachPhongActivity extends AppCompatActivity {
+public class DanhSachPhong_HoaDonActivity extends AppCompatActivity {
 
     final String DATABASE_NAME = "QuanLyNhaTroNew.sqlite";
     SQLiteDatabase database;
     ListView lsvDanhSachPhong;
     ArrayList<Phong> list;
-    AdapterPhong adapter;
-    int maphong = -1;
-    int position = 0;
+    AdapterChiTietHoaDon adapter;
+
+    int position = 0 ;
     FloatingActionButton ftbTrangChu, ftbHoaDon, ftbPhong, ftbBangGia;
     Animation tren, trai, xeo,back_trai,back_tren,back_xeo;
     boolean trove = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_danh_sach_phong);
+        setContentView(R.layout.activity_danh_sach_phong_hoa_don);
         addControl();
         readData();
         AnhXa();
         ThaoTac();
+
     }
 
-
-
-    private void readData()
-    {
-        database = Database.initDatabase(this,DATABASE_NAME);
-        Cursor cursor =  database.rawQuery("select * from Phong",null);
+    private void readData() {
+        database = Database.initDatabase(this, DATABASE_NAME);
+        Cursor cursor = database.rawQuery("select * from Phong", null);
         list.clear();
 
-        int i =0;
-
-        while( i< cursor.getCount())
-        {
+        for (int i = 0; i < cursor.getCount(); i++) {
             cursor.moveToPosition(i);
             int maphong = cursor.getInt(0);
             String tenphong = cursor.getString(1);
@@ -66,43 +63,32 @@ public class DanhSachPhongActivity extends AppCompatActivity {
             int sodien = cursor.getInt(4);
             int sonuoc = cursor.getInt(5);
             String trangthai = cursor.getString(6);
-            list.add(new Phong(maphong,tenphong,lau,tiencoc,sodien,sonuoc,trangthai));
+            list.add(new Phong(maphong, tenphong, lau, tiencoc, sodien, sonuoc, trangthai));
         }
         adapter.notifyDataSetChanged();
     }
 
-    private void addControl()
-    {
-        lsvDanhSachPhong = (ListView) findViewById(R.id.lsvDanhsachphong);
+    private void addControl() {
+        lsvDanhSachPhong = (ListView) findViewById(R.id.lsvdsphonghoadon);
         list = new ArrayList<>();
-        adapter = new AdapterPhong(this,list);
+        adapter = new AdapterChiTietHoaDon(this, list);
         lsvDanhSachPhong.setAdapter(adapter);
 
     }
 
-
-
-    public interface  SingleChoiceListener{
-        void onPositionButtonClick(String[] list1,int position);
-        void onNagativeButtonClick();
-    }
-    SingleChoiceListener mlistener;
-
-
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.menu, menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.allhoadon, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_search:
-                final AlertDialog.Builder builder = new AlertDialog.Builder(DanhSachPhongActivity.this);
-                final String[] list1 = {"Tất cả", "Còn Trống","Đã cho thuê"};
+            case R.id.action_searchallhd:
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(DanhSachPhong_HoaDonActivity.this);
+                final String[] list1 = {"Tất cả", "Chưa thanh toán","Đã thanh toán"};
                 builder.setTitle("Tìm kiếm");
                 builder.setSingleChoiceItems(list1, position, new DialogInterface.OnClickListener() {
                     @Override
@@ -115,42 +101,10 @@ public class DanhSachPhongActivity extends AppCompatActivity {
                         }
                         else if(position == 1)
                         {
-                            database = Database.initDatabase(DanhSachPhongActivity.this,DATABASE_NAME);
-                            Cursor cursor =  database.rawQuery("select * from Phong where TrangThai = ?",new String[]{0+""});
-                            list.clear();
 
-                            for(int m = 0 ; m< cursor.getCount(); m++)
-                            {
-                                cursor.moveToPosition(m);
-                                int maphong = cursor.getInt(0);
-                                String tenphong = cursor.getString(1);
-                                String lau = cursor.getString(2);
-                                String tiencoc = cursor.getString(3);
-                                int sodien = cursor.getInt(4);
-                                int sonuoc = cursor.getInt(5);
-                                String trangthai = cursor.getString(6);
-                                list.add(new Phong(maphong,tenphong,lau,tiencoc,sodien,sonuoc,trangthai));
-                            }
-                            adapter.notifyDataSetChanged();
 
                         }else{
-                            database = Database.initDatabase(DanhSachPhongActivity.this,DATABASE_NAME);
-                            Cursor cursor =  database.rawQuery("select * from Phong where TrangThai = ?",new String[]{1+""});
-                            list.clear();
 
-                            for(int m = 0 ; m< cursor.getCount(); m++)
-                            {
-                                cursor.moveToPosition(m);
-                                int maphong = cursor.getInt(0);
-                                String tenphong = cursor.getString(1);
-                                String lau = cursor.getString(2);
-                                String tiencoc = cursor.getString(3);
-                                int sodien = cursor.getInt(4);
-                                int sonuoc = cursor.getInt(5);
-                                String trangthai = cursor.getString(6);
-                                list.add(new Phong(maphong,tenphong,lau,tiencoc,sodien,sonuoc,trangthai));
-                            }
-                            adapter.notifyDataSetChanged();
 
                         }
                     }
@@ -165,14 +119,6 @@ public class DanhSachPhongActivity extends AppCompatActivity {
                 AlertDialog dialog =builder.create();
                 dialog.show();
                 return true;
-            case R.id.action_add:
-                Intent intent1 = getIntent();
-                maphong = intent1.getIntExtra("MaPhong",-1);
-                Intent intent = new Intent(DanhSachPhongActivity.this, ThemPhongActivity.class);
-                intent.putExtra("MaPhong1",maphong);
-                startActivity(intent);
-                finish();
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -182,7 +128,7 @@ public class DanhSachPhongActivity extends AppCompatActivity {
         ftbPhong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DanhSachPhongActivity.this,DanhSachPhongActivity.class);
+                Intent intent = new Intent(DanhSachPhong_HoaDonActivity.this,DanhSachPhongActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -190,7 +136,7 @@ public class DanhSachPhongActivity extends AppCompatActivity {
         ftbBangGia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DanhSachPhongActivity.this, CapNhatGiaDienNuocActivity.class);
+                Intent intent = new Intent(DanhSachPhong_HoaDonActivity.this, CapNhatGiaDienNuocActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -198,7 +144,7 @@ public class DanhSachPhongActivity extends AppCompatActivity {
         ftbHoaDon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DanhSachPhongActivity.this, DanhSachHoaDonActivity.class);
+                Intent intent = new Intent(DanhSachPhong_HoaDonActivity.this, DanhSachHoaDonActivity.class);
                 startActivity(intent);
                 finish();
             }
